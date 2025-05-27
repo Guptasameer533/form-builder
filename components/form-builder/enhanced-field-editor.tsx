@@ -26,25 +26,27 @@ export function EnhancedFieldEditor() {
 
   if (!selectedField || !localField) {
     return (
-      <GlassCard className="w-80 h-full bg-background/60 border-border/30">
-        <div className="p-6 border-b border-border/30">
+      <GlassCard className="w-full lg:w-80 h-full bg-background/60 border-border/30">
+        <div className="p-4 sm:p-6 border-b border-border/30">
           <div className="flex items-center space-x-2">
-            <div className="w-6 h-6 bg-gradient-to-br from-primary to-primary/60 rounded flex items-center justify-center">
-              <Settings className="w-3 h-3 text-white" />
+            <div className="w-5 h-5 sm:w-6 sm:h-6 bg-gradient-to-br from-primary to-primary/60 rounded flex items-center justify-center">
+              <Settings className="w-2 h-2 sm:w-3 sm:h-3 text-white" />
             </div>
-            <h2 className="text-lg font-semibold">Field Properties</h2>
+            <h2 className="text-base sm:text-lg font-semibold">Field Properties</h2>
           </div>
         </div>
         <div className="flex items-center justify-center h-full">
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
-            className="text-center p-8"
+            className="text-center p-6 sm:p-8"
           >
-            <div className="w-16 h-16 bg-gradient-to-br from-muted/40 to-muted/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
-              <Settings className="w-8 h-8 text-muted-foreground/60" />
+            <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-muted/40 to-muted/20 rounded-xl sm:rounded-2xl flex items-center justify-center mx-auto mb-4">
+              <Settings className="w-6 h-6 sm:w-8 sm:h-8 text-muted-foreground/60" />
             </div>
-            <p className="text-muted-foreground text-center">Select a field to edit its properties</p>
+            <p className="text-muted-foreground text-center text-sm sm:text-base">
+              Select a field to edit its properties
+            </p>
           </motion.div>
         </div>
       </GlassCard>
@@ -102,13 +104,13 @@ export function EnhancedFieldEditor() {
   }
 
   return (
-    <GlassCard className="w-80 h-full bg-background/60 border-border/30">
-      <div className="p-6 border-b border-border/30">
+    <GlassCard className="w-full lg:w-80 h-full bg-background/60 border-border/30">
+      <div className="p-4 sm:p-6 border-b border-border/30">
         <div className="flex items-center space-x-2 mb-4">
-          <div className="w-6 h-6 bg-gradient-to-br from-primary to-primary/60 rounded flex items-center justify-center">
-            <Settings className="w-3 h-3 text-white" />
+          <div className="w-5 h-5 sm:w-6 sm:h-6 bg-gradient-to-br from-primary to-primary/60 rounded flex items-center justify-center">
+            <Settings className="w-2 h-2 sm:w-3 sm:h-3 text-white" />
           </div>
-          <h2 className="text-lg font-semibold">Field Properties</h2>
+          <h2 className="text-base sm:text-lg font-semibold">Field Properties</h2>
         </div>
 
         <div className="flex items-center space-x-2">
@@ -124,7 +126,7 @@ export function EnhancedFieldEditor() {
         </div>
       </div>
 
-      <div className="p-6 space-y-6 max-h-[calc(100vh-200px)] overflow-y-auto">
+      <div className="p-4 sm:p-6 space-y-4 sm:space-y-6 max-h-[calc(100vh-200px)] overflow-y-auto">
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="space-y-4">
           {/* Basic Properties */}
           <div className="space-y-4">
@@ -137,7 +139,7 @@ export function EnhancedFieldEditor() {
                 value={localField.label}
                 onChange={(e) => handleFieldUpdate({ label: e.target.value })}
                 placeholder="Field label"
-                className="bg-background/50 border-border/30 focus:bg-background/80"
+                className="bg-background/50 border-border/30 focus:bg-background/80 text-sm sm:text-base"
               />
             </div>
 
@@ -150,7 +152,7 @@ export function EnhancedFieldEditor() {
                 value={localField.placeholder || ""}
                 onChange={(e) => handleFieldUpdate({ placeholder: e.target.value })}
                 placeholder="Placeholder text"
-                className="bg-background/50 border-border/30 focus:bg-background/80"
+                className="bg-background/50 border-border/30 focus:bg-background/80 text-sm sm:text-base"
               />
             </div>
 
@@ -164,7 +166,7 @@ export function EnhancedFieldEditor() {
                 onChange={(e) => handleFieldUpdate({ helpText: e.target.value })}
                 placeholder="Additional help text"
                 rows={2}
-                className="bg-background/50 border-border/30 focus:bg-background/80"
+                className="bg-background/50 border-border/30 focus:bg-background/80 text-sm"
               />
             </div>
 
@@ -254,7 +256,7 @@ export function EnhancedFieldEditor() {
                     })
                   }
                   placeholder="^[a-zA-Z0-9]+$"
-                  className="bg-background/50 border-border/30"
+                  className="bg-background/50 border-border/30 text-sm"
                 />
               </div>
             )}
@@ -271,7 +273,7 @@ export function EnhancedFieldEditor() {
                   </h4>
                   <AnimatedButton size="sm" variant="gradient" onClick={handleAddOption}>
                     <Plus className="w-4 h-4 mr-1" />
-                    Add
+                    <span className="hidden sm:inline">Add</span>
                   </AnimatedButton>
                 </div>
 
@@ -285,7 +287,7 @@ export function EnhancedFieldEditor() {
                         exit={{ opacity: 0, x: 20 }}
                         className="flex items-center space-x-2 p-2 bg-background/30 rounded-lg border border-border/20"
                       >
-                        <GripVertical className="w-4 h-4 text-muted-foreground cursor-grab" />
+                        <GripVertical className="w-4 h-4 text-muted-foreground cursor-grab hidden sm:block" />
                         <Input
                           value={option.label}
                           onChange={(e) =>
@@ -301,7 +303,7 @@ export function EnhancedFieldEditor() {
                           size="sm"
                           variant="outline"
                           onClick={() => handleDeleteOption(index)}
-                          className="hover:bg-destructive/10 hover:border-destructive/30"
+                          className="hover:bg-destructive/10 hover:border-destructive/30 flex-shrink-0"
                         >
                           <Trash2 className="w-4 h-4" />
                         </AnimatedButton>

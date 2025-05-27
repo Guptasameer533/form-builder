@@ -133,13 +133,13 @@ export function EnhancedFieldPalette() {
   }
 
   return (
-    <GlassCard className="w-80 h-full bg-background/60 border-border/30">
-      <div className="p-6 border-b border-border/30">
+    <GlassCard className="w-full lg:w-80 h-full bg-background/60 border-border/30">
+      <div className="p-4 sm:p-6 border-b border-border/30">
         <div className="flex items-center space-x-2 mb-4">
-          <div className="w-6 h-6 bg-gradient-to-br from-primary to-primary/60 rounded flex items-center justify-center">
-            <Sparkles className="w-3 h-3 text-white" />
+          <div className="w-5 h-5 sm:w-6 sm:h-6 bg-gradient-to-br from-primary to-primary/60 rounded flex items-center justify-center">
+            <Sparkles className="w-2 h-2 sm:w-3 sm:h-3 text-white" />
           </div>
-          <h2 className="text-lg font-semibold">Field Components</h2>
+          <h2 className="text-base sm:text-lg font-semibold">Field Components</h2>
         </div>
 
         <div className="relative mb-4">
@@ -148,16 +148,16 @@ export function EnhancedFieldPalette() {
             placeholder="Search fields..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="pl-10 bg-background/50 border-border/30 focus:bg-background/80 transition-colors"
+            className="pl-10 bg-background/50 border-border/30 focus:bg-background/80 transition-colors text-sm"
           />
         </div>
 
-        <div className="flex flex-wrap gap-1">
+        <div className="flex flex-wrap gap-1 sm:gap-2">
           {categories.map((category) => (
             <Badge
               key={category}
               variant={selectedCategory === category ? "default" : "outline"}
-              className="cursor-pointer text-xs hover:bg-primary/20 transition-colors"
+              className="cursor-pointer text-xs hover:bg-primary/20 transition-colors px-2 py-1"
               onClick={() => setSelectedCategory(category)}
             >
               {category}
@@ -166,7 +166,7 @@ export function EnhancedFieldPalette() {
         </div>
       </div>
 
-      <div className="p-4 space-y-3 max-h-[calc(100vh-280px)] overflow-y-auto">
+      <div className="p-3 sm:p-4 space-y-2 sm:space-y-3 max-h-[calc(100vh-280px)] overflow-y-auto">
         <AnimatePresence>
           {filteredFields.map((field, index) => (
             <motion.div
@@ -178,18 +178,20 @@ export function EnhancedFieldPalette() {
             >
               <AnimatedButton
                 variant="outline"
-                className="w-full justify-start h-auto p-4 text-left bg-background/30 border-border/30 hover:bg-background/60 hover:border-border/60 group"
+                className="w-full justify-start h-auto p-3 sm:p-4 text-left bg-background/30 border-border/30 hover:bg-background/60 hover:border-border/60 group min-h-[60px] sm:min-h-[auto]"
                 onClick={() => handleAddField(field.type)}
               >
                 <div className="flex items-start space-x-3 w-full">
                   <div
-                    className={`p-2 rounded-lg bg-gradient-to-br ${field.color} text-white group-hover:scale-110 transition-transform`}
+                    className={`p-2 rounded-lg bg-gradient-to-br ${field.color} text-white group-hover:scale-110 transition-transform flex-shrink-0`}
                   >
                     {field.icon}
                   </div>
                   <div className="flex-1 min-w-0">
                     <div className="font-medium text-sm mb-1">{field.label}</div>
-                    <div className="text-xs text-muted-foreground leading-relaxed">{field.description}</div>
+                    <div className="text-xs text-muted-foreground leading-relaxed hidden sm:block">
+                      {field.description}
+                    </div>
                   </div>
                 </div>
               </AnimatedButton>

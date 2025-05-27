@@ -361,7 +361,6 @@ export const useFormBuilder = create<FormBuilderStore>((set, get) => ({
 
   getResponses: (formId: string) => {
     const responses = JSON.parse(localStorage.getItem("form-builder-responses") || "[]")
-    console.log(responses);
     return responses.filter((response: FormResponse) => response.formId === formId)
   },
 
